@@ -44,7 +44,7 @@ function decode(expr) {
   let letters = [];
   let decodedStr = '';
 
-  // закинуть всё в массив по 10 символов
+  // Закинуть всё в массив по 10 символов
   for (let i = 0; i < expr.length; i += 10) {
     letters.push(expr.slice(i, i + 10));
   }
@@ -53,12 +53,12 @@ function decode(expr) {
   letters = letters.map((letter) => `${Number(letter)}`);
 
   // Замена на точки и тире
-  letters = letters.map((letter) => {
+  letters = letters.map((letter) =>
     letter.replace(/(10|11)/g, (match) => {
       if (match == 10) return '.';
       if (match == 11) return '-';
-    });
-  });
+    })
+  );
 
   decodedStr = letters.reduce((acc, curr) => {
     if (curr === 'NaN') {
